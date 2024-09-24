@@ -13,12 +13,16 @@ VSCodium is a free, open-source version of Microsoft's Visual Studio Code. It ca
 
 #### Installation Steps:
 ##### 1. Add the VSCodium GPG Key and Repository:
-     wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add
-     echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+     ```wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+    | gpg --dearmor \
+    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg```
+##### 2. Add the repository:
+    ```echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+    | sudo tee /etc/apt/sources.list.d/vscodium.list```
 
-##### 2. Update the Package List:
+##### 3. Update the Package List:
      sudo apt update
-##### 3. Install VSCodium:
+##### 4. Install VSCodium:
      sudo apt install codium
 
 ### 2. Open the HTML File from Task Three in VSCodium
